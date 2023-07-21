@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Style the close button */
+        .topright {
+            float: right;
+            cursor: pointer;
+            font-size: 28px;
+        }
+
+        .topright:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Tabs</h2>
+    <p>Click on the x button in the top right corner to close the current tab:</p>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Task-1')" id="defaultOpen">Task-1</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-2')">Task-2</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-3')">Task-3</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-4')">Task-4</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-5')">Task-5</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-6')">Task-6</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-7')">Task-7</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-8')">Task-8</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-9')">Task-9</button>
+        <button class="tablinks" onclick="openCity(event, 'Task-10')">Task-10</button>
+    </div>
+
+    <div id="Task-1" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to display the current day and time in the following format.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function day_time()
+            {
+                const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+                const d = new Date();
+                console.log("Today is: " + days[d.getDay()])
+                let hour = d.getHours()%12;
+                let m = (Math.floor(d/12) == 0) ? "AM":"PM";
+                return "Current Time is: " + hour + " " + m + " : " + d.getMinutes() + " : " + d.getSeconds()
+            }
+            
+            console.log(day_time())
+            </code>
+        </pre>
+        <button type="button" onclick="fun1()" class="btn btn-primary">Output</button>
+        <p id="sol-1"></p>
+    </div>
+
+    <div id="Task-2" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to find out if 1st January will be a Sunday between 2014 and 2050.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function get_years()
+                {
+                    let start_year = 2014;
+                    const years = []
+                    for(let i = 2014; i <= 2050; i++)
+                    {
+                        const d = new Date(i,0,1); // i is the year, 0 is 1st month, 1 is day 1
+                        if(d.getDay() == 0) // as the first day is sunday and its index is 0
+                        {
+                            years.push(i)
+                        }
+                    }
+                    return years // list of years in which 1st january is sunday
+                }
+                
+                console.log(get_years())
+            </code>
+        </pre>
+        <button type="button" onclick="fun2()" class="btn btn-primary">Output</button>
+        <p id="sol-2"></p>
+    </div>
+
+    <div id="Task-3" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to calculate the days left before Christmas.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function days_left()
+                {
+                    const d_now = new Date();
+                    const d_chris = new Date(2023,11,25);
+                    let mili_seconds = d_chris - d_now;
+                    let seconds = mili_seconds / 1000;
+                    let minutes = seconds / 60;
+                    let hour = minutes / 60;
+                    let day = hour / 24;
+                    return "Days left from Christmis are: " + Math.floor(day) 
+                }
+                
+                console.log(days_left())
+            </code>
+        </pre>
+        <button type="button" onclick="fun3()" class="btn btn-primary">Output</button>
+        <p id="sol-3"></p>
+    </div>
+    <div id="Task-4" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to compute the sum of the two given integers. If the two values are the same, then return triple their sum. </p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function sum(num_1,num_2)
+                {
+                    let sum = num_1+num_2;
+                    if(num_1==num_2)
+                    {
+                        sum *= 3;
+                    }
+                    return "Sum is: " + sum
+                }
+                
+                console.log(sum(4,5))
+                console.log(sum(4,4))
+            </code>
+        </pre>
+        <button type="button" onclick="fun4()" class="btn btn-primary">Output</button>
+        <p id="sol-4"></p>
+    </div>
+    <div id="Task-5" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p> Write a JavaScript program to check two given integers whether one is positive and another one is negative.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function check_integers(num_1,num_2)
+                {
+                    if(num_1 < 0)
+                        console.log("1st integer is Negative");
+                    else
+                        console.log("1st integer is Positive");
+                    if(num_2 < 0)
+                        console.log("2st integer is Negative");
+                    else
+                        console.log("2st integer is Positive");
+                }
+                // check_integers(3,4)
+                check_integers(2,-3)
+                
+            </code>
+        </pre>
+        <button type="button" onclick="fun5()" class="btn btn-primary">Output</button>
+        <p id="sol-5"></p>
+    </div>
+    <div id="Task-6" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to create another string by adding "Py" in front of a given string. If the given string begins with "Py" return the original string.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function py_str(str)
+                {
+                    let flag = str.startsWith("Py");
+                    if (flag)
+                        return str;
+                    else
+                        return "Py" + str;
+                }
+                console.log(py_str("Pymysql"))
+                console.log(py_str("Hello"))
+            </code>
+        </pre>
+        <button type="button" onclick="fun6()" class="btn btn-primary">Output</button>
+        <p id="sol-6"></p>
+    </div>
+    <div id="Task-7" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p> Write a JavaScript program to change the capitalization of all letters in a given string.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function change_capt(str)
+                {
+                    let new_str = "";
+                    for(let x of str)
+                    {
+                        if(x.charCodeAt() >= 65 && x.charCodeAt() <= 90)
+                            new_str += x.toLowerCase();
+                        else if(x.charCodeAt() >= 97 && x.charCodeAt() <= 122)
+                            new_str += x.toUpperCase();
+                        else
+                            new_str += x;
+                    }
+                    return new_str;
+                }
+                console.log(change_capt("I Love Pakistan "))                
+            </code>
+        </pre>
+        <button type="button" onclick="fun7()" class="btn btn-primary">Output</button>
+        <p id="sol-7"></p>
+    </div>
+    <div id="Task-8" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to compute the sum of all the digits that occur in a given string.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function sum_string_digits(str)
+                {
+                    let sum = 0;
+                    for(let x of str)
+                    {
+                        if(x.charCodeAt() >= 48 && x.charCodeAt() <= 57)
+                            sum += parseInt(x);
+                    }
+                    return sum;
+                }
+                console.log(sum_string_digits("123Hammad456"))
+            </code>
+        </pre>
+        <button type="button" onclick="fun8()" class="btn btn-primary">Output</button>
+        <p id="sol-8"></p>
+    </div>
+    <div id="Task-9" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to break an URL address and put its parts into an array.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function break_url(url)
+                {
+                    const url_array = [];
+                    const tok1 = url.split(":");
+                    url_array.push(tok1[0]);
+                    const tok2 = tok1[1].split("/");
+                    for(let x of tok2)
+                    {
+                        if(x != "")
+                        {
+                            if(url_array[2] != undefined)
+                                url_array[2] += "/" + x;
+                            else
+                                url_array.push(x);
+                        }
+                           
+                    }
+                    return url_array
+                }
+                console.log(break_url("https://facebook.com/Home/"))
+                console.log(break_url("https://facebook.com/Home/reels"))
+            </code>
+        </pre>
+        <button type="button" onclick="fun9()" class="btn btn-primary">Output</button>
+        <p id="sol-9"></p>
+    </div>
+    <div id="Task-10" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Task: </h3>
+        <p>Write a JavaScript program to sort the strings of a given array of strings in order of increasing length.</p>
+        <h3>Solution: </h3>
+        <pre>
+            <code>function sort(array)
+                {
+                    return array.sort(function(a,b){return a.length - b.length});
+                }
+                console.log(sort(["school","medicine","bike","car"]))
+            </code>
+        </pre>
+        <button type="button" onclick="fun10()" class="btn btn-primary">Output</button>
+        <p id="sol-10"></p>
+    </div>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        function fun1()
+        {
+            document.getElementById("sol-1").innerHTML = "<code>Today is: Friday<br>Current Time is: 5 PM : 50 : 28</code>"
+        }
+        function fun2()
+        {
+            document.getElementById("sol-2").innerHTML = "<code>[ 2017, 2023, 2034, 2040, 2045 ]</code>"
+        }
+        function fun3()
+        {
+            document.getElementById("sol-3").innerHTML = "<code>Days left from Christmis are: 156</code>"
+        }
+        function fun4()
+        {
+            document.getElementById("sol-4").innerHTML = "<code>Sum is: 9<br>Sum is: 24</code>"
+        }
+        function fun5()
+        {
+            document.getElementById("sol-5").innerHTML = "<code>1st integer is Positive<br>2nd integer is Negative</code>"
+        }
+        function fun6()
+        {
+            document.getElementById("sol-6").innerHTML = "<code>Pymysql<br>PyHello</code>"
+        }
+        function fun7()
+        {
+            document.getElementById("sol-7").innerHTML = "<code>i lOVE pAKISTAN</code>"
+        }
+        function fun8()
+        {
+            document.getElementById("sol-8").innerHTML = "<code>Sum of digits in string: 21</code>"
+        }
+        function fun9()
+        {
+            document.getElementById("sol-9").innerHTML = "<code>[ 'https', 'facebook.com', 'Home' ]<br>[ 'https', 'facebook.com', 'Home/reels' ]</code>"
+        }
+        function fun10()
+        {
+            document.getElementById("sol-10").innerHTML = "<code>[ 'car', 'bike', 'school', 'medicine' ]</code>"
+        }
+    </script>
+
+</body>
+
+</html>
